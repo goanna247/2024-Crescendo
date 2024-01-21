@@ -22,7 +22,7 @@
 struct RobotMap {
   struct Controllers {
     frc::XboxController driver = frc::XboxController(0);
-    frc::XboxController coDriver = frc::XboxController(1);
+    frc::XboxController codriver = frc::XboxController(1);
     frc::XboxController testController = frc::XboxController(2);
   };
   Controllers controllers;
@@ -55,7 +55,7 @@ struct RobotMap {
                 new wom::TalonFXEncoder(driveMotors[0], 0.0445_m, 6.75),
                 frc::DCMotor::Falcon500(1).WithReduction(6.75)},
             wom::Gearbox{turnMotors[0],
-                         new wom::CanEncoder(16, 0.0445_m, 4096, 12.8),
+                         new wom::CanEncoder(16, 0.0445_m, 4096, 1, "Drivebase"),
                          frc::DCMotor::Falcon500(1).WithReduction(12.8)},
             &frontLeftCancoder, 4_in / 2},
         wom::SwerveModuleConfig{
@@ -66,7 +66,7 @@ struct RobotMap {
                 new wom::TalonFXEncoder(driveMotors[1], 0.0445_m, 6.75),
                 frc::DCMotor::Falcon500(1).WithReduction(6.75)},
             wom::Gearbox{turnMotors[1],
-                         new wom::CanEncoder(18, 0.0445_m, 4096, 12.8),
+                         new wom::CanEncoder(18, 0.0445_m, 4096, 1, "Drivebase"),
                          frc::DCMotor::Falcon500(1).WithReduction(12.8)},
             &frontRightCancoder, 4_in / 2},
         wom::SwerveModuleConfig{
@@ -77,7 +77,7 @@ struct RobotMap {
                 new wom::TalonFXEncoder(driveMotors[2], 0.0445_m, 6.75),
                 frc::DCMotor::Falcon500(1).WithReduction(6.75)},
             wom::Gearbox{turnMotors[2],
-                         new wom::CanEncoder(17, 0.0445_m, 4096, 12.8),
+                         new wom::CanEncoder(17, 0.0445_m, 4096, 1, "Drivebase"),
                          frc::DCMotor::Falcon500(1).WithReduction(12.8)},
             &backRightCancoder, 4_in / 2},
         wom::SwerveModuleConfig{
@@ -88,7 +88,7 @@ struct RobotMap {
                 new wom::TalonFXEncoder(driveMotors[3], 0.0445_m, 6.75),
                 frc::DCMotor::Falcon500(1).WithReduction(6.75)},
             wom::Gearbox{turnMotors[3],
-                         new wom::CanEncoder(19, 0.0445_m, 4096, 12.8),
+                         new wom::CanEncoder(19, 0.0445_m, 4096, 1, "Drivebase"),
                          frc::DCMotor::Falcon500(1).WithReduction(12.8)},
             &backLeftCancoder, 4_in / 2},
     };

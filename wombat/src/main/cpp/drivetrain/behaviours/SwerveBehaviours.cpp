@@ -112,16 +112,12 @@ void ManualDrivebase::OnTick(units::second_t deltaTime) {
   // }
 
   if (_driverController->GetXButton()) {
-    _swerveDrivebase->SetTuning(60_deg, 2_mps);
+    _swerveDrivebase->SetTuning(60_deg, 0_mps);
+  } else if (_driverController->GetAButton()) {
+    _swerveDrivebase->SetTuning(175_deg, 0_mps);
   } else {
     _swerveDrivebase->SetIdle();
   }
-  
-  // if (_driverController->GetAButton()) {
-  //   _swerveDrivebase->SetTuning(45_deg, 0_mps);
-  // } else {
-  //   _swerveDrivebase->SetIdle();
-  // }
 }
 
 void ManualDrivebase::ResetMode() {

@@ -58,14 +58,14 @@ void Robot::RobotInit() {
   // backLeft = new ctre::phoenix6::hardware::TalonFX(5, "Drivebase");   // back left
   // backRight = new ctre::phoenix6::hardware::TalonFX(3, "Drivebase");
 
-  robotmap.swerveBase.turnMotors[0]->SetInverted(true);
-  robotmap.swerveBase.turnMotors[1]->SetInverted(true);
-  robotmap.swerveBase.turnMotors[2]->SetInverted(true);
-  robotmap.swerveBase.turnMotors[3]->SetInverted(true);
-  robotmap.swerveBase.driveMotors[0]->SetInverted(true);
-  robotmap.swerveBase.driveMotors[1]->SetInverted(true);
-  robotmap.swerveBase.driveMotors[2]->SetInverted(true);
-  robotmap.swerveBase.driveMotors[3]->SetInverted(true);
+  // robotmap.swerveBase.turnMotors[0]->SetInverted(true);
+  // robotmap.swerveBase.turnMotors[1]->SetInverted(true);
+  // robotmap.swerveBase.turnMotors[2]->SetInverted(true);
+  // robotmap.swerveBase.turnMotors[3]->SetInverted(true);
+  // robotmap.swerveBase.driveMotors[0]->SetInverted(true);
+  // robotmap.swerveBase.driveMotors[1]->SetInverted(true);
+  // robotmap.swerveBase.driveMotors[2]->SetInverted(true);
+  // robotmap.swerveBase.driveMotors[3]->SetInverted(true);
 
   // robotmap.swerveBase.moduleConfigs[0].turnMotor.encoder->SetInverted(true);
   // robotmap.swerveBase.moduleConfigs[1].turnMotor.encoder->SetInverted(true);

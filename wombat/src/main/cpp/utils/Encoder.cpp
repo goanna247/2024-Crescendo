@@ -44,7 +44,7 @@ void wom::utils::Encoder::SetReduction(double reduction) {
 }
 
 double wom::utils::Encoder::GetVelocityValue() const {
-  std::cout << "GET VELOCITY: " << GetVelocity() << std::endl;
+  // std::cout << "GET VELOCITY: " << GetVelocity() << std::endl;
   return GetVelocity();
   // return 0;
 }
@@ -84,6 +84,10 @@ units::radians_per_second_t wom::utils::Encoder::GetEncoderAngularVelocity() {
   // return n_turns_per_s;
 }
 
+// void wom::utils::Encoder::SetInvertedEncoder() {
+//   SetEncoderInverted();
+// }
+
 double wom::utils::DigitalEncoder::GetEncoderRawTicks() const {
   return _nativeEncoder.Get();
 }
@@ -96,10 +100,14 @@ double wom::utils::DigitalEncoder::GetVelocity() const {
   return 0;
 }
 
+// void wom::utils::DigitalEncoder::SetEncoderInverted(bool isInverted) {
+//   _nativeEncoder.SetInverted();
+// }
+
 wom::utils::CANSparkMaxEncoder::CANSparkMaxEncoder(rev::CANSparkMax* controller,
                                                    units::meter_t wheelRadius,
                                                    double reduction)
-    : wom::utils::Encoder(42, reduction, wheelRadius, 2),
+    : wom::utils::Encoder(42, 2, wheelRadius, 1),
       _encoder(controller->GetEncoder(
           rev::SparkRelativeEncoder::Type::kQuadrature)) {}
 
@@ -126,7 +134,7 @@ wom::utils::TalonFXEncoder::TalonFXEncoder(
       _controller(controller) {}
 
 double wom::utils::TalonFXEncoder::GetEncoderRawTicks() const {
-  std::cout << "GET ENCODER RAW TICKS: " << _controller->GetPosition().GetValue().value() << std::endl;
+  // std::cout << "GET ENCODER RAW TICKS: " << _controller->GetPosition().GetValue().value() << std::endl;
   return _controller->GetPosition().GetValue().value();
 }
 
@@ -164,6 +172,7 @@ wom::utils::CanEncoder::CanEncoder(int deviceNumber, units::meter_t wheelRadius,
                                    std::string name)
     : wom::utils::Encoder(ticksPerRotation, 2, wheelRadius, reduction) {
   _canEncoder = new ctre::phoenix6::hardware::CANcoder(deviceNumber, name);
+  // _canEncoder->Invert(true);
 }
 
 double wom::utils::CanEncoder::GetEncoderRawTicks() const {
@@ -177,3 +186,7 @@ double wom::utils::CanEncoder::GetEncoderTickVelocity() const {
 double wom::utils::CanEncoder::GetVelocity() const {
   return _canEncoder->GetVelocity().GetValue().value();
 }
+
+// void wom::utils::CanEncoder::SetEncoderInverted() {
+//   _canEncoder.
+// }

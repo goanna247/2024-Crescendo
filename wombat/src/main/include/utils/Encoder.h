@@ -26,6 +26,7 @@ class Encoder {
   virtual double GetEncoderRawTicks() const = 0;
   virtual double GetEncoderTickVelocity() const = 0;  // ticks/s
   virtual void ZeroEncoder();
+  // virtual void SetEncoderInverted();
 
   void SetEncoderPosition(units::degree_t position);
   void SetEncoderOffset(units::radian_t offset);
@@ -34,6 +35,7 @@ class Encoder {
   double GetEncoderTicksPerRotation() const;
 
   void SetReduction(double reduction);
+  // void SetInvertedEncoder();
 
   units::radian_t GetEncoderPosition();
   double GetEncoderDistance();
@@ -65,6 +67,8 @@ class DigitalEncoder : public Encoder {
   double GetPosition() const;
   double GetVelocity() const override;
 
+  // void SetEncoderInverted(bool isInverted);
+
  private:
   frc::Encoder _nativeEncoder;
 };
@@ -79,6 +83,8 @@ class CANSparkMaxEncoder : public Encoder {
 
   double GetPosition() const;
   double GetVelocity() const override;
+
+  // void SetEncoderInverted();
 
  protected:
   rev::SparkRelativeEncoder _encoder;
@@ -95,6 +101,8 @@ class TalonFXEncoder : public Encoder {
 
   double GetVelocity() const override;
 
+  // void SetEncoderInverted();
+
  private:
   ctre::phoenix6::hardware::TalonFX* _controller;
 };
@@ -108,6 +116,8 @@ class DutyCycleEncoder : public Encoder {
   double GetEncoderTickVelocity() const override;
 
   double GetVelocity() const override;
+
+  // void SetEncoderInverted();
 
  private:
   frc::DutyCycleEncoder _dutyCycleEncoder;
@@ -126,6 +136,8 @@ class CanEncoder : public Encoder {
   double GetVelocity() const override;
 
   const double constantValue = 0.0;
+
+  // void SetEncoderInverted();
 
  private:
   ctre::phoenix6::hardware::CANcoder* _canEncoder;
