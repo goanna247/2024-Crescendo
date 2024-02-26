@@ -34,7 +34,7 @@ SwerveModule::SwerveModule(std::string path, SwerveModuleConfig config,
                            // SwerveModule::angle_pid_conf_t anglePID,
                            SwerveModule::velocity_pid_conf_t velocityPID)
     :  // _anglePIDController(path + "/pid/angle", anglePID),
-      _anglePIDController{frc::PIDController(5, 0, 0, 0.005_s)},
+      _anglePIDController{frc::PIDController(3, 0, 0, 0.005_s)},
       _config(config),
       _velocityPIDController(frc::PIDController(1.2, 0, 0, 0.005_s)),
       _table(nt::NetworkTableInstance::GetDefault().GetTable(path)) {
@@ -344,7 +344,9 @@ void SwerveDrive::OnUpdate(units::second_t dt) {
             double diff = std::abs(_config.modules[i].turnMotor.encoder->GetEncoderPosition().value() -
                                    new_target_states[i].angle.Radians().value());
             _table->GetEntry("diff").SetDouble(diff);
-            if ((std::ceil(diff * 100.0) / 100.0) > (3.141592653589793238 / 2)) {
+            // if ((diff - (3.141592653589793238 / 2)) > 0.35) {
+            // if ((std::ceil(diff * 100.0) / 100.0) > (3.141592653589793238 / 2)) {
+            if (((std::ceil(diff * 100.0) / 100.0) - (3.141592653589793238 / 2)) > 0.35) {
               new_target_states[i].speed *= -1;
               new_target_states[i].angle = frc::Rotation2d{new_target_states[i].angle.Radians() - 3.141592653589793238_rad};
             } else {
@@ -355,7 +357,7 @@ void SwerveDrive::OnUpdate(units::second_t dt) {
           auto angle = new_target_states[i].angle.Radians();
           if (i == 3) {
             speed = -speed;
-            if (_target_speed.omega.value() == 0) {
+            if (units::math::abs(_target_speed.omega) < 0.1_rad_per_s) {
               speed = -speed;
             }
           }
