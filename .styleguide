@@ -1,0 +1,17 @@
+cppHeaderFileInclude {
+   \.h$
+   \.hpp$
+   \.inc$
+   \.inl$
+}
+
+cppSrcFileInclude {
+   \.cpp$
+}
+
+modifiableFileExclude {
+   gradle/
+   compile_commands.json
+   gradlew
+   gradlew.bat
+}
