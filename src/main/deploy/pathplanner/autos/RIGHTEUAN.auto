@@ -1,0 +1,111 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootAndWait"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EUANSMALLFORWARDS"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "EuanTurningFromLeftToFirst"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "EUANTISM"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeNote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EUANTISMREVERSE"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "EuanTurningFromFirstToShoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "EuanTurningFromLeftToSecond"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "EUANONETOTWO"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeNote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "EUANONETOTWOREVERSE"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "EuanTurningFromSecondToSHOOT"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
