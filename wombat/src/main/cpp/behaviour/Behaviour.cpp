@@ -9,7 +9,7 @@
 
 using namespace behaviour;
 
-// Behaviour
+// Behaviour 
 Behaviour::Behaviour(std::string name, units::time::second_t period)
     : _bhvr_name(name), _bhvr_period(period), _bhvr_state(BehaviourState::INITIALISED) {}
 Behaviour::~Behaviour() {

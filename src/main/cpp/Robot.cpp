@@ -161,7 +161,8 @@ void Robot::AutonomousInit() {
 
   _swerveDrive->GetConfig().gyro->Reset();
 
-  m_autoSelected = m_chooser.GetSelected();
+  // m_autoSelected = m_chooser.GetSelected();
+  m_autoSelected = defaultAuto;
 
   robotmap._builder = autos::InitCommands(_swerveDrive, shooter, intake, alphaArm);
 

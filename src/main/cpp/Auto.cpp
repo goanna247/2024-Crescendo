@@ -28,7 +28,7 @@ wom::SwerveAutoBuilder* autos::InitCommands(wom::drivetrain::SwerveDrive* _swerv
         [_intake]() { return wom::make<PassNote>(_intake)->Until(wom::make<behaviour::WaitTime>(1_s)); }},
         {"EjectNote", [_intake]() { return wom::make<EjectNote>(_intake)->WithTimeout(1_s); }},
         {"ShootAndWait", [_shooter, _intake]() {
-          return wom::make<AutoShooter>(_shooter, _intake, 200_rad_per_s, false)
+          return wom::make<AutoShooter>(_shooter, _intake, 1500_rad_per_s, false)
               ->Until(wom::make<wom::WaitTime>(1.5_s));
           // << wom::make<wom::WaitTime>(0.5_s);
         }},

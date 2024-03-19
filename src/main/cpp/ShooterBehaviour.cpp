@@ -78,7 +78,7 @@ void AutoShooter::OnTick(units::second_t dt) {
   // _shooter->SetState(ShooterState::kSpinUp);
   // _intake->SetState(IntakeState::kIntake);
 
-  _shooter->SetPidGoal(300_rad_per_s); //_goal
+  _shooter->SetPidGoal(1500_rad_per_s); //_goal
 
   // if (_intake->GetState() != IntakeState::kPass && _intake->GetConfig().passSensor->Get() == false) {
     // _shooter->SetState(ShooterState::kReverse);

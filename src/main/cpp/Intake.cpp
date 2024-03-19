@@ -45,7 +45,7 @@ void Intake::OnUpdate(units::second_t dt) {
     } break;
 
     case IntakeState::kEject: {
-      if (_config.intakeSensor->Get() == true && _config.passSensor->Get() == true) {
+      if (_config.intakeSensor->Get() == true) {
         SetState(IntakeState::kIdle);
       }
       _stringStateName = "Eject";
@@ -55,7 +55,7 @@ void Intake::OnUpdate(units::second_t dt) {
 
     case IntakeState::kHold: {
       units::volt_t pidCalculate = 0_V;
-      if (_config.intakeSensor->Get() == true && _config.passSensor->Get() == true) {
+      if (_config.intakeSensor->Get() == true) {
         SetState(IntakeState::kIdle);
       }
       // units::volt_t pidCalculate =

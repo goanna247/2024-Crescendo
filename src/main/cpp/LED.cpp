@@ -11,7 +11,7 @@ void LED::OnUpdate(units::second_t dt) {
   switch (_state) {
     case LEDState::kIdle: {
       stateName = "IDLE";
-      _led.frc::PWM::SetSpeed(0.99); //Off
+      _led.frc::PWM::SetSpeed(0.99); // Off
     } break;
     case LEDState::kAiming: {
       stateName = "Aiming";

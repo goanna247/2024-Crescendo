@@ -66,8 +66,8 @@ struct RobotMap {
   struct IntakeSystem {
     rev::CANSparkMax intakeMotor{35, rev::CANSparkMax::MotorType::kBrushless};
     wom::CANSparkMaxEncoder intakeEncoder{&intakeMotor, 0.1_m};
-    frc::DigitalInput intakeSensor{7};
-    frc::DigitalInput passSensor{5};
+    frc::DigitalInput intakeSensor{5};
+    frc::DigitalInput passSensor{7};
     // frc::DigitalInput magSensor{0};
     // frc::DigitalInput shooterSensor{0};
 
@@ -101,6 +101,9 @@ struct RobotMap {
         new ctre::phoenix6::hardware::TalonFX(9, "Drivebase"),   // front right
         new ctre::phoenix6::hardware::TalonFX(3, "Drivebase"),   // back left
         new ctre::phoenix6::hardware::TalonFX(1, "Drivebase")};  // back right
+
+       
+
 
     wpi::array<wom::SwerveModuleConfig, 4> moduleConfigs{
         wom::SwerveModuleConfig{
@@ -170,15 +173,15 @@ struct RobotMap {
                                   {0.9, 0.9, 0.9}};
 
     // current limiting and setting idle mode of modules to brake mode
-    // SwerveBase() {
+    SwerveBase() {
     //  for (size_t i = 0; i < 4; i++) {
     //    turnMotors[i]->ConfigSupplyCurrentLimit(
     //        SupplyCurrentLimitConfiguration(true, 15, 15, 0));
     //    driveMotors[i]->SetNeutralMode(NeutralMode::Brake);
     //    turnMotors[i]->SetNeutralMode(NeutralMode::Brake);
-    //    driveMotors[i]->SetInverted(true);
     //  }
-    //}
+      driveMotors[2]->SetInverted(true);
+    }
   };
   SwerveBase swerveBase;
 

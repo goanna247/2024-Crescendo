@@ -42,7 +42,7 @@ void AlphaArm::OnUpdate(units::second_t dt) {
     case AlphaArmState::kIntakeAngle:
       _stringStateName = "kIntakeAngle";
 
-      _pidIntakeState.SetSetpoint(0.04);  // 3.8
+      _pidIntakeState.SetSetpoint(0.065);  // 3.8
       _setAlphaArmVoltage = -units::volt_t{_pidIntakeState.Calculate((_config->alphaArmEncoder.GetEncoderPosition().value() * (2 * 3.1415)))};
       break;
     case AlphaArmState::kIntakedAngle:
@@ -55,14 +55,14 @@ void AlphaArm::OnUpdate(units::second_t dt) {
     case AlphaArmState::kClimbAngle:
       _stringStateName = "kClimbAngle";
 
-      _pidArmStates.SetSetpoint(2);  //-0.48
+      _pidArmStates.SetSetpoint(1.7);  //-0.48
       _setAlphaArmVoltage = -units::volt_t{_pidArmStates.Calculate((_config->alphaArmEncoder.GetEncoderPosition().value() * (2 * 3.1415)))};
       break;
 
     case AlphaArmState::kClimbed:
       _stringStateName = "kClimbed";
 
-      _pidClimberStates.SetSetpoint(0.2);  //-0.48
+      _pidClimberStates.SetSetpoint(0.05);  //-0.48
       _setAlphaArmVoltage = -units::volt_t{_pidClimberStates.Calculate((_config->alphaArmEncoder.GetEncoderPosition().value() * (2 * 3.1415)))};
       break;
     case AlphaArmState::kSpeakerAngle:
